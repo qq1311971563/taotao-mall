@@ -23,7 +23,7 @@ http://www.springframework.org/schema/tx/spring-tx.xsd"
 		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
 		<property name="url" value="jdbc:mysql://localhost:3306/fufu"></property>
 		<property name="username" value="root"></property>
-		<property name="password" value="admin"></property>
+		<property name="password" value="123456"></property>
 		<property name="maxActive" value="10" />
 		<property name="minIdle" value="5" />
 	</bean>
