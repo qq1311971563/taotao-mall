@@ -21,10 +21,13 @@ public class UserServiceImpl implements UserService {
     public WebResult checkData(String content, Integer type) {
         TbUserExample example = new TbUserExample();
         TbUserExample.Criteria criteria = example.createCriteria();
+        //用户名验证
         if (1 == type) {
             criteria.andUsernameEqualTo(content);
+            //电话号码验证
         } else if (2 == type) {
             criteria.andPhoneEqualTo(content);
+            //邮箱验证
         } else {
             criteria.andEmailEqualTo(content);
         }

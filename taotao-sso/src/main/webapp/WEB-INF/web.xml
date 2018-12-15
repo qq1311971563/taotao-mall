@@ -29,7 +29,7 @@
     <!-- *.action 拦截后缀为.action结尾的 -->
     <!-- / 拦截所有但是不包括.jsp -->
     <!-- * 拦截所有包括.jsp -->
-    <url-pattern>/sso/*</url-pattern>
+    <url-pattern>/</url-pattern>
   </servlet-mapping>
   <!-- 3: 字符编码过滤器 ,一定要放在所有过滤器前面 -->
   <filter>
