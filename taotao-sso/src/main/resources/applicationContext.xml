@@ -67,9 +67,8 @@ http://www.springframework.org/schema/tx/spring-tx.xsd"
 
 	<!-- 单机版整合 -->
 	<bean id="jedisPool" class="redis.clients.jedis.JedisPool">
-		<constructor-arg name="host" value="192.168.180.131" />
+		<constructor-arg name="host" value="192.168.192.128" />
 		<constructor-arg name="port" value="6379" />
 	</bean>
 	<bean id="jedisClientSingle" class="com.taotao.sso.dao.impl.JedisClientSingle"></bean>
-
 </beans>

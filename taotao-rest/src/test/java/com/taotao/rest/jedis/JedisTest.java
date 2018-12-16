@@ -16,7 +16,7 @@ import redis.clients.jedis.JedisPool;
 public class JedisTest {
 	@Test
 	public void testJedisSingle() {
-		Jedis jedis = new Jedis("192.168.180.131", 6379);
+		Jedis jedis = new Jedis("192.168.192.128", 6379);
 		jedis.set("key1", "jedistest1");
 		String string = jedis.get("key1");
 		System.out.println(string);
@@ -25,7 +25,7 @@ public class JedisTest {
 
 	@Test
 	public void testJedisPool() {
-		JedisPool jedisPool = new JedisPool("192.168.180.131", 6379);
+		JedisPool jedisPool = new JedisPool("192.168.192.128", 6379);
 		Jedis jedis = jedisPool.getResource();
 		String string = jedis.get("key1");
 		System.out.println(string);

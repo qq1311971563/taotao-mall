@@ -9,4 +9,8 @@ public interface UserService {
     WebResult checkData(String content, Integer type);
 
     WebResult createUser(TbUser user);
+
+    WebResult userLogin(String username , String password);
+
+    WebResult getUserByToken(String token);
 }
