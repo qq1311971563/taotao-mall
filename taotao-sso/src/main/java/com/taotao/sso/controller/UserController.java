@@ -71,7 +71,7 @@ public class UserController {
         }
     }
 
-    @RequestMapping(value = "/loging", method = RequestMethod.POST)
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
     @ResponseBody
     public WebResult userLogin(String username, String password) {
         if (StringUtils.isBlank(username)) {
