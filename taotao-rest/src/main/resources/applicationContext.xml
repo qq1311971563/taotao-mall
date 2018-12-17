@@ -24,7 +24,7 @@ http://www.springframework.org/schema/tx/spring-tx.xsd"
 		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
 		<property name="url" value="jdbc:mysql://localhost:3306/fufu"></property>
 		<property name="username" value="root"></property>
-		<property name="password" value="admin"></property>
+		<property name="password" value="123456"></property>
 		<property name="maxActive" value="10" />
 		<property name="minIdle" value="5" />
 	</bean>
@@ -67,7 +67,7 @@ http://www.springframework.org/schema/tx/spring-tx.xsd"
 
 	<!-- 单机版整合 -->
 	<bean id="jedisPool" class="redis.clients.jedis.JedisPool">
-		<constructor-arg name="host" value="192.168.180.131" />
+		<constructor-arg name="host" value="192.168.192.128" />
 		<constructor-arg name="port" value="6379" />
 	</bean>
 	<bean id="jedisClientSingle" class="com.taotao.rest.dao.impl.JedisClientSingle"></bean>

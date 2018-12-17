@@ -4,7 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/user")
+@RequestMapping("/page")
 public class PageController {
 
     @RequestMapping("/register")
@@ -13,7 +13,7 @@ public class PageController {
     }
 
     @RequestMapping("/login")
-    public String showLoging() {
+    public String showLogin() {
         return "login";
     }
 
