@@ -22,7 +22,7 @@ public class FTPTest {
 
 		FileInputStream inputStream = new FileInputStream(
 				new File("G:\\Pictures\\workTest\\upload\\spring_uoload\\abc.jpg"));
-		FtpUtil.uploadFile("192.168.180.130", 21, "ftpuser", "123456", "/home/ftpuser/www/images", "/2018/10/26",
+		FtpUtil.uploadFile("192.168.192.129", 21, "ftpuser", "123456", "/home/ftpuser/www/images", "/2018/10/26",
 				"abc.jpg", inputStream);
 		System.out.println(1);
 	}
