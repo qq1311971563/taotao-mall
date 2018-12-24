@@ -1,6 +1,6 @@
 package com.taotao.sso.service.impl;
 
-import com.alibaba.druid.support.json.JSONUtils;
+import com.taotao.common.entity.CookieUtils;
 import com.taotao.common.entity.WebResult;
 import com.taotao.common.utils.JsonUtils;
 import com.taotao.entity.TbUser;
@@ -14,6 +14,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -61,7 +63,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public WebResult userLogin(String username, String password) {
+    public WebResult userLogin(String username, String password,
+                               HttpServletRequest request, HttpServletResponse response) {
         //根据用户名密码查询是否有对应记录
         TbUserExample userExample = new TbUserExample();
         TbUserExample.Criteria criteria = userExample.createCriteria();
@@ -75,8 +78,12 @@ public class UserServiceImpl implements UserService {
         TbUser tbUser = tbUsers.get(0);
         String token = UUID.randomUUID().toString();
         tbUser.setPassword(null);//清空密码,前台不保存密码信息
+        //保存用户登录信息到redis中
         jedisClient.set(REDIS_USER_SESSION_KEY + ":" + token, JsonUtils.objectToJson(tbUser));
         jedisClient.expire(REDIS_USER_SESSION_KEY + ":" + token, SSO_SESSION_EXPIRE);
+        //把用户信息写入Cookie
+        CookieUtils.setCookie(request,response,"TT_TOKEN",token);
+
         return WebResult.ok(token);
     }
 
@@ -88,5 +95,14 @@ public class UserServiceImpl implements UserService {
         }
         jedisClient.expire(REDIS_USER_SESSION_KEY + ":" + token, SSO_SESSION_EXPIRE);
         return WebResult.ok(JsonUtils.jsonToPojo(user, TbUser.class));
+    }
+
+    @Override
+    public WebResult userLogOut(HttpServletRequest request,HttpServletResponse response,String token) {
+        //清除用户本地信息
+        CookieUtils.deleteCookie(request,response,"TT_TOKEN");
+        //清理redis
+        jedisClient.del(REDIS_USER_SESSION_KEY + ":" + token);
+        return WebResult.ok();
     }
 }

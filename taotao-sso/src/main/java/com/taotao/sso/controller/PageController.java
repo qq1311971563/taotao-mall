@@ -15,7 +15,7 @@ public class PageController {
 
     @RequestMapping("/login")
     public String showLogin(String redirect, Model model) {
-        model.addAttribute("redirectUrl",redirect);
+        model.addAttribute("redirect",redirect);
         return "login";
     }
 

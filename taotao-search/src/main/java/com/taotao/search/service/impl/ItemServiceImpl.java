@@ -17,7 +17,7 @@ import java.util.List;
 public class ItemServiceImpl implements ItemService {
     @Autowired
     private ItemMapper itemMapper;
-    private SolrServer solrServer = new HttpSolrServer("http://192.168.180.132:8080/solr");
+    private SolrServer solrServer = new HttpSolrServer("http://192.168.192.132:8080/solr");
 
     @Override
     public WebResult importAllItems() {

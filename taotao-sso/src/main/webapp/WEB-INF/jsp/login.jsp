@@ -76,6 +76,7 @@
 			},
 			doLogin:function() {
 				$.post("/user/login", $("#formlogin").serialize(),function(data){
+				    debugger
 					if (data.status == 200) {
 						alert("登录成功！");
 						if (redirectUrl == "") {

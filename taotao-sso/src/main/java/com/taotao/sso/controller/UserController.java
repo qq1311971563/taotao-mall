@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 
 /**
  * @author Administrator
@@ -73,14 +76,20 @@ public class UserController {
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     @ResponseBody
-    public WebResult userLogin(String username, String password) {
+    public WebResult userLogin(String username, String password, HttpServletRequest request, HttpServletResponse response) {
         if (StringUtils.isBlank(username)) {
             return WebResult.build(400, "用户名不能为空");
         }
         if (StringUtils.isBlank(password)) {
             return WebResult.build(400, "密码不能为空");
         }
-        return userService.userLogin(username, password);
+        return userService.userLogin(username, password,request,response);
+    }
+
+    @RequestMapping(value = "/logout/{token}",method = RequestMethod.GET)
+    @ResponseBody
+    public WebResult userLogOut(@PathVariable String token,HttpServletRequest request, HttpServletResponse response){
+        return userService.userLogOut(request,response,token);
     }
 
     @RequestMapping("/token/{token}")

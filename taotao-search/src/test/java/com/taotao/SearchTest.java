@@ -16,7 +16,7 @@ import java.sql.SQLOutput;
 public class SearchTest {
     @Test
     public void addDocument() throws IOException, SolrServerException {
-        SolrServer solrServer = new HttpSolrServer("http://192.168.180.132:8080/solr");
+        SolrServer solrServer = new HttpSolrServer("http://192.168.192.132:8080/solr");
         SolrInputDocument document = new SolrInputDocument();
         document.addField("id",536563);
         document.addField("item_title","new2 - 阿尔卡特 (OT-927) 炭黑 联通3G手机 双卡双待");
@@ -30,7 +30,7 @@ public class SearchTest {
     }
     @Test
     public void queryTest() throws SolrServerException {
-        SolrServer solrServer = new HttpSolrServer("http://192.168.180.132:8080/solr");
+        SolrServer solrServer = new HttpSolrServer("http://192.168.192.132:8080/solr");
         //创建一个查询对象
         SolrQuery query = new SolrQuery();
         //设置查询条件

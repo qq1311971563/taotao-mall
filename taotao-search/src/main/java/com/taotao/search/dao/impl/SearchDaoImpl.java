@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Map;
 @Repository
 public class SearchDaoImpl implements SearchDao {
-    private SolrServer solrServer = new HttpSolrServer("http://192.168.180.132:8080/solr");
+    private SolrServer solrServer = new HttpSolrServer("http://192.168.192.132:8080/solr");
 
     @Override
     public SearchResult search(SolrQuery solrQuery) throws Exception {
